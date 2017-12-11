@@ -82,6 +82,7 @@ for (i = 0; i < authors.length; i++) {
 }
 let input = document.getElementById('txt-input')
 let cards = document.querySelectorAll('.a-class');
+
 cards.forEach(function (card) {
   card.addEventListener('click', function () {
     event.currentTarget.classList.toggle('selected')
@@ -89,12 +90,12 @@ cards.forEach(function (card) {
   });
 
   input.addEventListener('keyup', function (e) {
+    if (e.keyCode === 13) {
+      input.value = '';
+     }
     if (card.classList.contains('selected')) {
       card.childNodes[1].childNodes[0].innerHTML = input.value;
-    } 
-     if (e.keyCode === 13) {
-      e.preventDefault();
-      input.value = '';
+    
     }
   });
 });
